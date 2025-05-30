@@ -7,7 +7,7 @@ User = get_user_model()
 
 @pytest.mark.django_db
 def test_create_user():
-    """Тест для проверки создания пользователя с валидными данными."""
+    """Test to check if user is created with valid data."""
     user = User.objects.create_user(
         email="test@example.com",
         password="password123",
@@ -24,14 +24,14 @@ def test_create_user():
 
 @pytest.mark.django_db
 def test_create_user_without_email():
-    """Тест для проверки создания пользователя без указания email."""
+    """Test to check user creation without specifying email."""
     with pytest.raises(ValueError):
         User.objects.create_user(email="", password="password123")
 
 
 @pytest.mark.django_db
 def test_create_user_with_existing_email():
-    """Тест для проверки создания пользователя с уже существующим email."""
+    """Test to check if a user is created with an existing email."""
     User.objects.create_user(email="test@example.com", password="password123")
 
     with pytest.raises(Exception):
@@ -40,7 +40,7 @@ def test_create_user_with_existing_email():
 
 @pytest.mark.django_db
 def test_str_method():
-    """Тест для проверки метода __str__ пользовательской модели."""
+    """Test to check the __str__ method of a custom model."""
     user = User.objects.create_user(email="test@example.com", password="password123")
 
     assert str(user) == "test@example.com"

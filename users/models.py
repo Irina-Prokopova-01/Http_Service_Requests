@@ -1,23 +1,26 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from users.services import UserManager
 
 
 class CustomUser(AbstractUser):
     """
-    Модель пользователя
+    Model user
     """
 
     username = None
-    email = models.EmailField(unique=True, help_text="Укажите вашу почту")
-    first_name = models.CharField(max_length=30, help_text="Укажите ваше имя")
-    last_name = models.CharField(max_length=30, help_text="Укажите вашу фамилию")
+    email = models.EmailField(unique=True, help_text="Enter your email")
+    first_name = models.CharField(max_length=30, help_text="Please enter your name")
+    last_name = models.CharField(max_length=30, help_text="Please enter your last name")
     phone = models.CharField(
         max_length=20,
-        verbose_name="Номер телефона",
+        verbose_name="Phone number",
         blank=True,
         null=True,
-        help_text="Введите номер телефона",
+        help_text="Enter phone number",
     )
+
+    objects = UserManager()
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -26,6 +29,6 @@ class CustomUser(AbstractUser):
         return f"{self.email}"
 
     class Meta:
-        verbose_name = "Пользователь"
-        verbose_name_plural = "Пользователи"
+        verbose_name = "User"
+        verbose_name_plural = "Users"
         ordering = ("email",)

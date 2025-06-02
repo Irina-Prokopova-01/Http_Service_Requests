@@ -30,6 +30,9 @@ requests = "^2.32.3"
 uvicorn = "^0.34.2"
 
 
+[tool.poetry.group.dev.dependencies]
+pytest-asyncio = "^1.0.0"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"

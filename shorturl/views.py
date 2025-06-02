@@ -28,14 +28,14 @@ class URLrequestCreateView(generics.CreateAPIView):
 
         existing_url = URLrequest.objects.filter(original_url=original_url).first()
         if existing_url:
-            return Response({'short_id': f"{self.get_base_url()}/{existing_url.short_id}"}, status=status.HTTP_200_OK)
+            return Response({'short_id': f"{existing_url.short_id}"}, status=status.HTTP_200_OK)
 
         short_id = self.generate_short_id(original_url)
 
         url_instance = URLrequest(original_url=original_url, short_id=short_id)
         url_instance.save()
 
-        return Response({'short_id': f"{self.get_base_url()}/{short_id}"}, status=status.HTTP_201_CREATED)
+        return Response({'short_id': f"{short_id}"}, status=status.HTTP_201_CREATED)
 
     def get_base_url(self):
         return f"http://{self.request.get_host()}"

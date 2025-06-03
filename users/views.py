@@ -6,14 +6,14 @@ from users.serializers import CustomUserSerializer
 
 
 class CustomUserCreateAPIView(CreateAPIView):
-    """Контроллер создания пользователя."""
+    """User creation controller."""
 
     serializer_class = CustomUserSerializer
     queryset = CustomUser.objects.all()
     permission_classes = (AllowAny,)
 
     def perform_create(self, serializer):
-        """Меняю логику контроллера для его правильной регистрации пользователя."""
+        """Change the logic of the controller to properly register the user."""
 
         # Сохраняю пользователя и сразу делаю его активным
         user = serializer.save(is_active=True)

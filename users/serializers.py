@@ -5,7 +5,7 @@ from users.models import CustomUser
 
 class CustomUserSerializer(ModelSerializer):
     """
-    Сериализатор пользователя
+    User serializer
     """
 
     class Meta:

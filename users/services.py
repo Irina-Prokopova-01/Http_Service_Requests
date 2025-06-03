@@ -3,7 +3,7 @@ from django.contrib.auth.models import BaseUserManager
 
 class UserManager(BaseUserManager):
     """
-       Manager for users that controls the creation and persistence of user model instances.
+    Manager for users that controls the creation and persistence of user model instances.
     """
 
     def create_user(self, email, password=None, **extra_fields):

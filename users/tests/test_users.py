@@ -32,12 +32,16 @@ def test_create_user_with_existing_email():
     CustomUser.objects.create_user(email="test@example.com", password="password123")
 
     with pytest.raises(Exception):
-        CustomUser.objects.create_user(email="test@example.com", password="newpassword123")
+        CustomUser.objects.create_user(
+            email="test@example.com", password="newpassword123"
+        )
 
 
 @pytest.mark.django_db
 def test_str_method():
     """Test to check the __str__ method of a custom model."""
-    user = CustomUser.objects.create_user(email="test@example.com", password="password123")
+    user = CustomUser.objects.create_user(
+        email="test@example.com", password="password123"
+    )
 
     assert str(user) == "test@example.com"

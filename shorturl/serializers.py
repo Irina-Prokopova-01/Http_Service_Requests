@@ -11,4 +11,3 @@ class URLrequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = URLrequest
         fields = "__all__"
-

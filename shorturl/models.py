@@ -3,6 +3,7 @@ from django.db import models
 
 class URLrequest(models.Model):
     """Model url."""
+
     original_url = models.URLField(unique=True)
     short_id = models.CharField(max_length=6, unique=True)
 
